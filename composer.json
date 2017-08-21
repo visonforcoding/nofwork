@@ -1,5 +1,13 @@
 {
     "require": {
-        "monolog/monolog": "^1.23"
+        "monolog/monolog": "^1.23",
+        "nikic/fast-route": "^1.2",
+        "cakephp/chronos": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src",
+            "demaya\\": "./demaya"
+        }
     }
 }
