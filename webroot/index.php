@@ -11,8 +11,5 @@
 // for built-in server
 define('APP_ROOT', dirname(__DIR__));
 $loader = require APP_ROOT . '/vendor/autoload.php';
-use Cake\Chronos\Chronos;
-// var_dump($_SERVER);
-$date = Chronos::createFromFormat('Y-m-d', '2009-01-31');
-$Server = new demaya\Http\Server();
+$Server = new demaya\Http\Server(dirname(__DIR__).'/config');
 $Server->run();
