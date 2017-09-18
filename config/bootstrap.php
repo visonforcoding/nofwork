@@ -1,7 +1,11 @@
 <?php
 
 use Tracy\Debugger;
+use dmy\dmylog\Log;
 
+//引入helper function
+define('DEMAYA_DIR', dirname(__DIR__) . '/demaya/');
+require_once DEMAYA_DIR . 'Helpers/function.php';
 define('ENV', 'prd');
 switch (ENV) {
 	case 'dev':
@@ -17,16 +21,25 @@ switch (ENV) {
 //		$error_handler->registerShutdownFunction();
 		error_reporting(0);
 		set_error_handler(function($errno, $errstr, $errfile, $errline) {
-			var_dump([
+			$error = [
 				'errno' => $errno,
 				'errstr' => $errstr,
 				'errfile' => $errfile,
 				'errline' => $errline
-			]);
+			];
+			var_dump($error);
+			Log::add('error', '错误', $error);
 		});
 		register_shutdown_function(function() {
 			$error = error_get_last();
-			var_dump($error);
+			if ($error && $error['type'] === E_ERROR) {
+				//致命错误捕获
+				var_dump($error);
+			}
+			Log::add('error', '致命错误', $error);
+			$dmylog = new Log('127.0.0.1/10000', 'hll-demaya');
+			$dmylog->save();
+			var_dump($dmylog);
 		});
 		break;
 	default:

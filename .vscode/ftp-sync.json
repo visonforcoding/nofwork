@@ -1,5 +1,5 @@
 {
-    "remotePath": "/data/www/demaya",
+    "remotePath": "/home/vison/www/demaya",
     "host": "192.168.33.10",
     "username": "root",
     "password": "vagrant",
