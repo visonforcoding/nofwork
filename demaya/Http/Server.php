@@ -4,6 +4,7 @@ namespace demaya\Http;
 
 use demaya\Route\Route;
 use demaya\Service\Dispatch;
+use dmy\Configure\Configure;
 
 class Server
 {
@@ -13,6 +14,7 @@ class Server
 	public function __construct($configDir)
 	{
 		$this->configDir = $configDir;
+		Configure::configured($this->configDir);
 	}
 
 	public function run()

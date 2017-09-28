@@ -1,16 +1,22 @@
 <?php
 
 use Tracy\Debugger;
-use dmy\dmylog\Log;
+use dmy\logger\Log;
+use dmy\Configure\Configure;
+
+define('ENV', 'dev');
 
 //引入helper function
 define('DEMAYA_DIR', dirname(__DIR__) . '/demaya/');
 require_once DEMAYA_DIR . 'Helpers/function.php';
-define('ENV', 'prd');
+
+require __DIR__ . '/paths.php';
+
 switch (ENV) {
 	case 'dev':
 		//tracy debug
 		Debugger::enable(Debugger::DEVELOPMENT);
+		Debugger::$strictMode = TRUE;
 		break;
 	case 'prd':
 		//引入sentry
@@ -45,3 +51,7 @@ switch (ENV) {
 	default:
 		break;
 }
+//引入配置
+Configure::load('app');
+$config = Configure::consume('Datasources.default');
+dump($config);

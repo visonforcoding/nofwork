@@ -25,3 +25,19 @@ $time2 = fn($time1, $time2);
 echo date('Y-m-d H:i:s', $time2);
 
 var_dump(strtotime($time2));
+
+function praseNumDate($string){
+    preg_match('/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/',$string,$matchs);
+    if(count($matchs)==7){
+        return $matchs[1].'-'.$matchs[2].'-'.$matchs[3].' '.$matchs[4].':'.$matchs[5].':'.$matchs[6];
+    }else{
+        return false;
+    }
+    return $matchs;
+}
+
+var_dump(praseNumDate('20160725152626'));
+
+$a = null;
+
+var_dump(is_null($a));
