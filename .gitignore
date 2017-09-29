@@ -1,4 +1,4 @@
 vendor
-!vendor.dmy
+!vendor/dmy/
 nbproject
 .vscode
