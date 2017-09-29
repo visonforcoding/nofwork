@@ -8,6 +8,7 @@ use PDO;
 class Mysql extends Driver
 {
 
+	use PDODriverTrait;
 
 	/**
 	 * Base configuration settings for MySQL driver
@@ -157,16 +158,6 @@ class Mysql extends Driver
 		}
 
 		return $this->_supportsNativeJson = version_compare($this->_version, '5.7.0', '>=');
-	}
-
-	public function connection($connection = null): void
-	{
-		
-	}
-
-	public function disconnect(): void
-	{
-		
 	}
 
 }

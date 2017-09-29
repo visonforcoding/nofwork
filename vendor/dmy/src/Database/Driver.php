@@ -33,6 +33,8 @@ abstract class Driver
 	 * @var bool
 	 */
 	protected $_autoQuoting = false;
+	
+	protected $_connection;
 
 	/**
 	 * Constructor

@@ -1,6 +1,7 @@
 <?php
 
 namespace dmy\Configure;
+use dmy\Utility\Hash;
 
 /**
  * Configuration class. Used for managing runtime configuration information.
@@ -164,18 +165,7 @@ class Configure
 	 */
 	public static function consume($var)
 	{
-		if (strpos($var, '.') === false) {
-			if (!isset(static::$_values[$var])) {
-				return null;
-			}
-			$value = static::$_values[$var];
-			unset(static::$_values[$var]);
-
-			return $value;
-		}
-		$value = Hash::get(static::$_values, $var);
-		static::delete($var);
-
+		$value = Hash::get(self::$_values, $var);
 		return $value;
 	}
 

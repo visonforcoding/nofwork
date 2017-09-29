@@ -220,8 +220,7 @@ return [
      */
     'Datasources' => [
         'default' => [
-            'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Mysql',
+            'driver' => 'dmy\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',
             /**
@@ -231,8 +230,8 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
-            'password' => '123456',
-            'database' => 'meiyue',
+            'password' => 'ASDqwe123!@#',
+            'database' => 'sentry',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],

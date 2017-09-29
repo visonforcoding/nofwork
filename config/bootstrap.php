@@ -3,6 +3,7 @@
 use Tracy\Debugger;
 use dmy\logger\Log;
 use dmy\Configure\Configure;
+use dmy\Datasource\ConnectionManager;
 
 define('ENV', 'dev');
 
@@ -53,5 +54,5 @@ switch (ENV) {
 }
 //引入配置
 Configure::load('app');
-$config = Configure::consume('Datasources.default');
-dump($config);
+ConnectionManager::config(Configure::consume('Datasources'));
+dump(ConnectionManager::get('default'));
