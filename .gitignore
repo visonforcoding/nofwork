@@ -1,4 +1,5 @@
-vendor
+!vendor/
+vendor/*
 !vendor/dmy/
 nbproject
 .vscode
