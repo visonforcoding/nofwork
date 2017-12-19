@@ -5,6 +5,7 @@ class Index
 {
     public function index()
     {
-        \dmy\logger\Log::add('debug','测试',[]);
+        \dmy\logger\Log::add('debug', '测试', []);
+        dump(__FILE__);
     }
 }
