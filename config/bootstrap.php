@@ -57,4 +57,3 @@ switch (ENV) {
 //引入配置
 Configure::load('app');
 ConnectionManager::config(Configure::consume('Datasources'));
-dump(ConnectionManager::get('default'));
