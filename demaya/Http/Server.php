@@ -10,6 +10,7 @@ class Server
 {
 
 	protected $configDir;
+	protected $requestUrl;
 
 	public function __construct($configDir)
 	{
@@ -32,17 +33,23 @@ class Server
 	{
 		require $this->configDir . '/routes.php';
 		$route = new Route();
-		$url = $route->request_url;
+		$this->requestUrl = $route->request_url;
 		$urls = $route->prase();
 		$controller = null;
 		$action = null;
 		foreach (Route::$routes as $value) {
-			if ($url == $value['url']) {
+			if ($this->requestUrl == $value['url']) {
+				//匹配路由
 				$controller = $value['dispatchParams']['controller'];
 				$controller = toBigHump($controller);
 				$action = $value['dispatchParams']['action'];
 				$action = toLittleHump($action);
 				break;
+			} else {
+				//范路由
+				if(preg_match('/^\/:controller/',$value['url'])){
+					$controller = toBigHump($urls[1]);
+				}
 			}
 		}
 		if (!$controller || !$action) {

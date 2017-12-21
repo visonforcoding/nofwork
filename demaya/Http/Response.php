@@ -4,5 +4,4 @@ namespace demaya\Http;
 
 class Response
 {
-	
 }

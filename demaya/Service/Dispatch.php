@@ -2,6 +2,8 @@
 
 namespace demaya\Service;
 
+use ReflectionClass;
+
 class Dispatch
 {
 
@@ -20,7 +22,14 @@ class Dispatch
 			}
 		}
 		$controllerObj = new $controllerClass;
-		call_user_func([$controllerObj, $action]);
+		$reflection = new ReflectionClass($controllerClass);
+		if ($reflection->isAbstract() || $reflection->isInterface()) {
+			throw new Exception('missing controller');
+		}
+
+		$controllerObj = $reflection->newInstance();
+		$controllerObj->$action();
+//		call_user_func([$controllerObj, $action]);
 	}
 
 }

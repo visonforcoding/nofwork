@@ -2,7 +2,6 @@
 
 namespace demaya\Http;
 
-
 use dmy\Utility\Hash;
 
 /**
