@@ -18,7 +18,7 @@ class Controller
 	public function __construct(Request $request = null, Response $response = null)
 	{
 
-		//$this->setRequest($request !== null ? $request : new Request);
+		$this->setRequest($request !== null ? $request : new Request);
 		$this->response = $response !== null ? $response : new Response;
 
 

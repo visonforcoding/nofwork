@@ -45,12 +45,7 @@ class Server
 				$action = $value['dispatchParams']['action'];
 				$action = toLittleHump($action);
 				break;
-			} else {
-				//范路由
-				if(preg_match('/^\/:controller/',$value['url'])){
-					$controller = toBigHump($urls[1]);
-				}
-			}
+			} 
 		}
 		if (!$controller || !$action) {
 			$controller = toBigHump($urls[1]);

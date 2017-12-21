@@ -3,7 +3,7 @@
 namespace demaya\Service;
 
 use ReflectionClass;
-
+use demaya\Http\Request;
 class Dispatch
 {
 
@@ -26,8 +26,8 @@ class Dispatch
 		if ($reflection->isAbstract() || $reflection->isInterface()) {
 			throw new Exception('missing controller');
 		}
-
-		$controllerObj = $reflection->newInstance();
+		$request = Request::createFromGlobals();
+		$controllerObj = $reflection->newInstance($request);
 		$controllerObj->$action();
 //		call_user_func([$controllerObj, $action]);
 	}
